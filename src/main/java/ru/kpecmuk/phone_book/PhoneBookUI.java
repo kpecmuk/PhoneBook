@@ -7,7 +7,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author kpecmuk
- * @since  14.02.17
+ * @since 14.02.17
  */
 public class PhoneBookUI {
     private final I_PhoneBook phoneBook;
@@ -27,9 +27,8 @@ public class PhoneBookUI {
 
     private void info(Map<Integer, Action> actionMap) {
         System.out.println(">>> Welcome screen <<<");
-        for (final Action action:this.actionMap.values())
-             {
-                 System.out.println(action.info());
+        for (final Action action : this.actionMap.values()) {
+            System.out.println(action.info());
         }
     }
 }
