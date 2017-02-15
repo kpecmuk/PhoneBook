@@ -17,14 +17,14 @@ public class PhoneBookUI {
     private final Map<Integer, Action> actionMenu = new ConcurrentHashMap<>();
     private final Validator validator = new Validator();
 
-    public PhoneBookUI() {
+    PhoneBookUI() {
     }
 
-    public void loadAction(Action action) {
+    void loadAction(Action action) {
         this.actionMenu.put(action.key(), action);
     }
 
-    public void show() {
+    void show() {
         do {
             this.info(this.actionMenu);
             doAction();

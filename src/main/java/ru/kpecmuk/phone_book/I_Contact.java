@@ -10,7 +10,7 @@ public interface I_Contact {
 
     void addPhoneNumber(String number);
 
-    String getName() ;
+    String getName();
 
     List<String> getPhones();
 }

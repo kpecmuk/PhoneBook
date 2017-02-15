@@ -13,7 +13,7 @@ public class Validator {
         this.scanner = new Scanner(System.in);
     }
 
-    public int getInt(String message){
+    public int getInt(String message) {
         boolean invalid;
         do {
             try {

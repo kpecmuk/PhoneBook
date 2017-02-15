@@ -25,7 +25,7 @@ public class PhoneBook implements I_PhoneBook {
 
     @Override
     public void addPhone(String phoneNumber) {
-        PhoneNumber number = new PhoneNumber(phoneIds.incrementAndGet(),phoneNumber);
+        PhoneNumber number = new PhoneNumber(phoneIds.incrementAndGet(), phoneNumber);
 
     }
 
