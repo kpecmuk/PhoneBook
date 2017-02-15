@@ -10,6 +10,7 @@ public class AddContactAction implements Action {
 
     @Override
     public void execute(I_PhoneBook phoneBook) {
+        System.out.println("add contact");
     }
 
     public String info() {

@@ -10,6 +10,7 @@ public class DeleteContactAction implements Action {
 
     @Override
     public void execute(I_PhoneBook phoneBook) {
+        System.out.println("delete contact");
     }
 
     public String info() {
