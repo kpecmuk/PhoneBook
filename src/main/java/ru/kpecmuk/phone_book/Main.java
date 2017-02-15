@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        PhoneBookUI ui = new PhoneBookUI(new PhoneBook());
+        PhoneBookUI ui = new PhoneBookUI();
 
         ui.loadAction(new AddContactAction());
         ui.loadAction(new DeleteContactAction());

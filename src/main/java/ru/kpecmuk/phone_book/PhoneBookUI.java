@@ -10,11 +10,10 @@ import java.util.concurrent.ConcurrentHashMap;
  * @since 14.02.17
  */
 public class PhoneBookUI {
-    private final I_PhoneBook phoneBook;
+    private final I_PhoneBook phoneBook = new PhoneBook();
     private final Map<Integer, Action> actionMap = new ConcurrentHashMap<>();
 
-    public PhoneBookUI(I_PhoneBook phoneBook) {
-        this.phoneBook = phoneBook;
+    public PhoneBookUI() {
     }
 
     public void loadAction(Action action) {
