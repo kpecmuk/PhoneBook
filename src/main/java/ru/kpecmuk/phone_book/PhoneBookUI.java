@@ -1,8 +1,10 @@
 package ru.kpecmuk.phone_book;
 
 import ru.kpecmuk.phone_book.actions.Action;
+import ru.kpecmuk.phone_book.tools.ConsoleIO;
 import ru.kpecmuk.phone_book.tools.Validator;
 
+import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -15,9 +17,10 @@ import java.util.concurrent.ConcurrentHashMap;
 public class PhoneBookUI {
     private final I_PhoneBook phoneBook = new PhoneBook();
     private final Map<Integer, Action> actionMenu = new ConcurrentHashMap<>();
-    private final Validator validator = new Validator();
+    private final Validator validator;
 
     PhoneBookUI() {
+        this.validator = new Validator(new ConsoleIO());
     }
 
     void loadAction(Action action) {
@@ -53,5 +56,14 @@ public class PhoneBookUI {
         for (final Action action : this.actionMenu.values()) {
             System.out.println(action.info());
         }
+    }
+
+    /**
+     * Закрываем ресурсы
+     *
+     * @throws IOException some text
+     */
+    public void close() throws IOException {
+        this.validator.close();
     }
 }

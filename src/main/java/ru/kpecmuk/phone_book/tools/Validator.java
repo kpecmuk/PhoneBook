@@ -1,16 +1,17 @@
 package ru.kpecmuk.phone_book.tools;
 
-import java.util.Scanner;
+import java.io.Closeable;
+import java.io.IOException;
 
 /**
  * @author kpecmuk
  * @since 15.02.2017
  */
-public class Validator {
-    private final Scanner scanner;
+public class Validator implements Closeable {
+    private IO io;
 
-    public Validator() {
-        this.scanner = new Scanner(System.in);
+    public Validator(IO io) {
+        this.io = io;
     }
 
     public int getInt(String message) {
@@ -18,10 +19,10 @@ public class Validator {
         do {
             try {
                 System.out.print(message);
-                return Integer.valueOf(this.scanner.nextInt());
+                return Integer.valueOf(this.io.read());
             } catch (Exception e) {
                 invalid = true;
-                scanner.next();
+                this.io.read();
             }
         } while (invalid);
         throw new UnsupportedOperationException();
@@ -29,6 +30,10 @@ public class Validator {
 
     public String getString(String message) {
         System.out.print(message);
-        return this.scanner.next();
+        return this.io.read();
+    }
+
+    @Override
+    public void close() throws IOException {
     }
 }
