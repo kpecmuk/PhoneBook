@@ -18,7 +18,7 @@ public class Validator implements Closeable {
         boolean invalid;
         do {
             try {
-                System.out.print(message);
+                io.println(message);
                 return Integer.valueOf(this.io.read());
             } catch (Exception e) {
                 invalid = true;
@@ -29,7 +29,7 @@ public class Validator implements Closeable {
     }
 
     public String getString(String message) {
-        System.out.print(message);
+        io.println(message);
         return this.io.read();
     }
 

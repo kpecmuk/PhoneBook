@@ -3,6 +3,9 @@ package ru.kpecmuk.phone_book;
 import java.util.List;
 
 /**
+ * ОПИСАНИЕ КОНТАКТА, имя, список номеров
+ * возможно добавятся ещё свойства
+ *
  * @author kpecmuk
  * @since 15.02.17
  */

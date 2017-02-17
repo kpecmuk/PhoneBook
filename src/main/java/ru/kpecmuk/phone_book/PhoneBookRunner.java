@@ -6,6 +6,10 @@ import ru.kpecmuk.phone_book.actions.DeleteContactAction;
 import java.io.IOException;
 
 /**
+ * ФАЙЛ ЗАПУСКА
+ * Создание объекта, добавление действий, запуск
+ * По завершению освобождение ресурсов
+ *
  * @author kpecmuk
  * @since 14.02.17
  */

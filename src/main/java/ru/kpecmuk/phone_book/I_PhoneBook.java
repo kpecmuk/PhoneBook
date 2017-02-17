@@ -1,6 +1,8 @@
 package ru.kpecmuk.phone_book;
 
 /**
+ * ИСПОЛНЯЮЩИЙ ИНТЕРФЕЙС телефонной книги
+ *
  * @author kpecmuk
  * @since 14.02.17
  */

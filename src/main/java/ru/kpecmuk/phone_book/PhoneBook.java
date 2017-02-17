@@ -5,6 +5,12 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
+ * Релизация I_PhoneBook
+ * Добавление контакта
+ * Удаление контакта
+ * Добавление номера
+ * Удаление номера
+ *
  * @author kpecmuk
  * @since 14.02.17
  */
