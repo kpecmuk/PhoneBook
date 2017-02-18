@@ -1,5 +1,7 @@
 package ru.kpecmuk.phone_book;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.kpecmuk.phone_book.actions.Action;
 import ru.kpecmuk.phone_book.tools.ConsoleIO;
 import ru.kpecmuk.phone_book.tools.Validator;
@@ -15,15 +17,18 @@ import java.util.concurrent.ConcurrentHashMap;
  * @since 14.02.17
  */
 public class PhoneBookUI {
+    final Logger logger = LoggerFactory.getLogger(PhoneBookUI.class);
     private final I_PhoneBook phoneBook = new PhoneBook();
     private final Map<Integer, Action> actionMenu = new ConcurrentHashMap<>();
     private final Validator validator;
 
     PhoneBookUI() {
+        logger.info("Created : " + this.getClass());
         this.validator = new Validator(new ConsoleIO());
     }
 
     void loadAction(Action action) {
+        logger.info("Loading UI " + action.getClass());
         this.actionMenu.put(action.key(), action);
     }
 
