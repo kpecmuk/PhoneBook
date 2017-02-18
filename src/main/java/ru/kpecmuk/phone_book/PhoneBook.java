@@ -1,5 +1,7 @@
 package ru.kpecmuk.phone_book;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.kpecmuk.phone_book.tools.Validator;
 
 import java.util.LinkedHashMap;
@@ -17,6 +19,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @since 14.02.17
  */
 public class PhoneBook implements I_PhoneBook {
+    private final Logger logger = LoggerFactory.getLogger(PhoneBook.class.getSimpleName());
     private final AtomicInteger contactIds = new AtomicInteger();
     private final AtomicInteger phoneIds = new AtomicInteger();
     private final Map<Integer, I_Contact> contacts = new LinkedHashMap<>();
@@ -30,7 +33,6 @@ public class PhoneBook implements I_PhoneBook {
 
     @Override
     public void addContact(I_PhoneBook phoneBook, Validator validator) {
-        System.out.println("Inside addContact\n");
         this.contacts.put
                 (contactIds.incrementAndGet(),
                         new Contact(validator.getString("Enter contact name: ")));
@@ -39,7 +41,6 @@ public class PhoneBook implements I_PhoneBook {
 
     @Override
     public void deleteContact(I_PhoneBook phoneBook, Validator validator) {
-        System.out.println("Inside deleteContact\n");
         try {
             this.contacts.remove(validator.getString("Enter contact name: "));
         } catch (Exception e) {

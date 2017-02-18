@@ -1,5 +1,7 @@
 package ru.kpecmuk.phone_book;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.kpecmuk.phone_book.actions.AddContactAction;
 import ru.kpecmuk.phone_book.actions.DeleteContactAction;
 import ru.kpecmuk.phone_book.actions.ExitAction;
@@ -16,6 +18,7 @@ import java.io.IOException;
  * @since 14.02.17
  */
 public class PhoneBookRunner {
+    private final Logger logger = LoggerFactory.getLogger(PhoneBookRunner.class.getSimpleName());
 
     public static void main(String[] args) throws IOException {
 

@@ -17,18 +17,18 @@ import java.util.concurrent.ConcurrentHashMap;
  * @since 14.02.17
  */
 public class PhoneBookUI {
-    final Logger logger = LoggerFactory.getLogger(PhoneBookUI.class);
+    final Logger logger = LoggerFactory.getLogger(PhoneBookUI.class.getSimpleName());
     private final I_PhoneBook phoneBook = new PhoneBook();
     private final Map<Integer, Action> actionMenu = new ConcurrentHashMap<>();
     private final Validator validator;
 
     PhoneBookUI() {
-        logger.info("Created : " + this.getClass());
+        logger.info("Created : " + this.getClass().getSimpleName());
         this.validator = new Validator(new ConsoleIO());
     }
 
     void loadAction(Action action) {
-        logger.info("Loading UI " + action.getClass());
+        logger.info(" UI <-- " + action.getClass().getSimpleName());
         this.actionMenu.put(action.key(), action);
     }
 

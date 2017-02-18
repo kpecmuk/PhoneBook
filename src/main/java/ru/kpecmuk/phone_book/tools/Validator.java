@@ -1,5 +1,8 @@
 package ru.kpecmuk.phone_book.tools;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.Closeable;
 import java.io.IOException;
 
@@ -8,6 +11,7 @@ import java.io.IOException;
  * @since 15.02.2017
  */
 public class Validator implements Closeable {
+    private final Logger logger = LoggerFactory.getLogger(Validator.class.getSimpleName());
     private IO io;
 
     public Validator(IO io) {

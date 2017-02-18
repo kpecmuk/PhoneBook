@@ -1,5 +1,8 @@
 package ru.kpecmuk.phone_book.tools;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.PrintStream;
 import java.util.Scanner;
 
@@ -8,6 +11,7 @@ import java.util.Scanner;
  * @since 16.02.2017
  */
 public class ConsoleIO implements IO {
+    private final Logger logger = LoggerFactory.getLogger(ConsoleIO.class.getSimpleName());
     private final Scanner scanner;
     private final PrintStream out;
 
