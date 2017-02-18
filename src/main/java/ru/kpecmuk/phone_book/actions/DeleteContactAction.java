@@ -14,7 +14,7 @@ public class DeleteContactAction implements Action {
     }
 
     public String info() {
-        return this.key() + " - Delete contact\n";
+        return (this.key() + " - Delete contact\n");
     }
 
     public int key() {

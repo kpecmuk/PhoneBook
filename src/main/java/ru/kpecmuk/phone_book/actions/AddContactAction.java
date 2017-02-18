@@ -14,7 +14,7 @@ public class AddContactAction implements Action {
     }
 
     public String info() {
-        return this.key() + " - Add new contact\n";
+        return (this.key() + " - Add new contact\n");
     }
 
     public int key() {

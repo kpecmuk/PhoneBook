@@ -27,12 +27,13 @@ public class PhoneBookUI {
         this.actionMenu.put(action.key(), action);
     }
 
-    void show() {
+    void show() throws IOException {
         do {
             this.info(this.actionMenu);
             int action = validator.getInt("> Your action: ");
             if (action == 5) {
                 doAction(5);
+                this.close();
                 break;
             } else
                 doAction(action);
@@ -66,5 +67,6 @@ public class PhoneBookUI {
      */
     public void close() throws IOException {
         this.validator.close();
+        this.actionMenu.clear();
     }
 }
