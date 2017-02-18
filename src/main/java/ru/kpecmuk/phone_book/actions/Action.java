@@ -1,6 +1,7 @@
 package ru.kpecmuk.phone_book.actions;
 
 import ru.kpecmuk.phone_book.I_PhoneBook;
+import ru.kpecmuk.phone_book.tools.Validator;
 
 /**
  * @author kpecmuk
@@ -13,7 +14,7 @@ import ru.kpecmuk.phone_book.I_PhoneBook;
  * @since 14.02.17
  */
 public interface Action {
-    void execute(I_PhoneBook phoneBook);
+    void execute(I_PhoneBook phoneBook, Validator validator);
 
     String info();
 

@@ -1,5 +1,7 @@
 package ru.kpecmuk.phone_book;
 
+import ru.kpecmuk.phone_book.tools.Validator;
+
 /**
  * ИСПОЛНЯЮЩИЙ ИНТЕРФЕЙС телефонной книги
  *
@@ -7,11 +9,13 @@ package ru.kpecmuk.phone_book;
  * @since 14.02.17
  */
 public interface I_PhoneBook {
-    void addContact(String contactName);
+    void viewContacts(I_PhoneBook phoneBook, Validator validator);
 
-    int deleteContact(String name);
+    void addContact(I_PhoneBook phoneBook, Validator validator);
 
-    void addPhone(String phoneNumber);
+    void deleteContact(I_PhoneBook phoneBook, Validator validator);
 
-    int deletePhone(String phoneNumber);
+    void addPhone(String phoneNumber, Validator validator);
+
+    void deletePhone(String phoneNumber, Validator validator);
 }

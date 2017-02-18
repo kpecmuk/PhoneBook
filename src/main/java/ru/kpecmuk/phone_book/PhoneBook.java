@@ -1,5 +1,7 @@
 package ru.kpecmuk.phone_book;
 
+import ru.kpecmuk.phone_book.tools.Validator;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -20,22 +22,41 @@ public class PhoneBook implements I_PhoneBook {
     private final Map<Integer, I_Contact> contacts = new LinkedHashMap<>();
 
     @Override
-    public void addContact(String name) {
-        this.contacts.put(contactIds.incrementAndGet(), new Contact(name));
+    public void viewContacts(I_PhoneBook phoneBook, Validator validator) {
+        for (I_Contact contact : contacts.values()) {
+            validator.showText(contact.getName() + "\n");
+        }
     }
 
     @Override
-    public int deleteContact(String name) {
-        return 0;
+    public void addContact(I_PhoneBook phoneBook, Validator validator) {
+        System.out.println("Inside addContact\n");
+        this.contacts.put
+                (contactIds.incrementAndGet(),
+                        new Contact(validator.getString("Enter contact name: ")));
+        this.viewContacts(phoneBook, validator);
     }
 
     @Override
-    public void addPhone(String phoneNumber) {
+    public void deleteContact(I_PhoneBook phoneBook, Validator validator) {
+        System.out.println("Inside deleteContact\n");
+        try {
+            this.contacts.remove(validator.getString("Enter contact name: "));
+        } catch (Exception e) {
+            validator.showText("Nothing to remove\n");
+        } finally {
+            this.viewContacts(phoneBook, validator);
+        }
+    }
+
+    @Override
+    public void addPhone(String phoneNumber, Validator validator) {
+        System.out.println("Inside addPhone");
         PhoneNumber number = new PhoneNumber(phoneIds.incrementAndGet(), phoneNumber);
     }
 
     @Override
-    public int deletePhone(String phoneNumber) {
-        return 0;
+    public void deletePhone(String phoneNumber, Validator validator) {
+        System.out.println("Inside deletePhone");
     }
 }

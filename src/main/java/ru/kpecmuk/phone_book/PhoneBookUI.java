@@ -47,7 +47,7 @@ public class PhoneBookUI {
     public void doAction(int userAction) {
         for (final Action action : actionMenu.values()) {
             if (userAction == action.key()) {
-                action.execute(this.phoneBook);     // запуск действия
+                action.execute(this.phoneBook, this.validator);     // запуск действия
                 return;
             }
         }

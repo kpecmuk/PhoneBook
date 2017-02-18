@@ -7,19 +7,19 @@ import ru.kpecmuk.phone_book.tools.Validator;
  * @author kpecmuk
  * @since 18.02.2017
  */
-public class ExitAction implements Action {
+public class ViewContacts implements Action {
     @Override
     public void execute(I_PhoneBook phoneBook, Validator validator) {
-        System.out.println("Save & Exit");
+        phoneBook.viewContacts(phoneBook, validator);
     }
 
     @Override
     public String info() {
-        return (this.key() + " - Exit program\n");
+        return (this.key() + " - View all phonebook\n");
     }
 
     @Override
     public int key() {
-        return 5;
+        return 1;
     }
 }

@@ -1,6 +1,7 @@
 package ru.kpecmuk.phone_book.actions;
 
 import ru.kpecmuk.phone_book.I_PhoneBook;
+import ru.kpecmuk.phone_book.tools.Validator;
 
 /**
  * @author kpecmuk
@@ -9,8 +10,8 @@ import ru.kpecmuk.phone_book.I_PhoneBook;
 public class AddContactAction implements Action {
 
     @Override
-    public void execute(I_PhoneBook phoneBook) {
-        System.out.println("add contact");
+    public void execute(I_PhoneBook phoneBook, Validator validator) {
+        phoneBook.addContact(phoneBook, validator);
     }
 
     public String info() {
@@ -18,6 +19,6 @@ public class AddContactAction implements Action {
     }
 
     public int key() {
-        return 1;
+        return 2;
     }
 }
