@@ -14,11 +14,15 @@ public class Validator implements Closeable {
         this.io = io;
     }
 
+    public void showText(String text) {
+        this.io.print(text);
+    }
+
     public int getInt(String message) {
         boolean invalid;
         do {
             try {
-                io.println(message);
+                showText(message);
                 return Integer.valueOf(this.io.read());
             } catch (Exception e) {
                 invalid = true;
@@ -29,7 +33,7 @@ public class Validator implements Closeable {
     }
 
     public String getString(String message) {
-        io.println(message);
+        showText(message);
         return this.io.read();
     }
 

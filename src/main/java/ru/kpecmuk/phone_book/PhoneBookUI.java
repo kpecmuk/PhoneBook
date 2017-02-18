@@ -30,31 +30,32 @@ public class PhoneBookUI {
     void show() {
         do {
             this.info(this.actionMenu);
-            doAction();
-        } while (true);
+            int action = validator.getInt("> Your action: ");
+            if (action == 5) {
+                doAction(5);
+                break;
+            } else
+                doAction(action);
+        }
+        while (true);
     }
 
     /**
-     * 1 - считать действие
-     * 2 - проверить
-     * 3 - выполнить
-     * 4 - выходим отсюда если выбрано корректное действие
+     * Выполнить действие
      */
-    public void doAction() {
-        do {
-            for (final Action action : actionMenu.values()) {
-                if (validator.getInt("> Your action: ") == action.key()) {
-                    action.execute(this.phoneBook);     // запуск действия
-                    return;
-                }
+    public void doAction(int userAction) {
+        for (final Action action : actionMenu.values()) {
+            if (userAction == action.key()) {
+                action.execute(this.phoneBook);     // запуск действия
+                return;
             }
-        } while (true);
+        }
     }
 
     private void info(Map<Integer, Action> actionMap) {
-        System.out.println(">>> Welcome screen <<<");
-        for (final Action action : this.actionMenu.values()) {
-            System.out.println(action.info());
+        validator.showText(">>> PHONE BOOK OPTIONS <<<\n");
+        for (final Action action : actionMap.values()) {
+            validator.showText(action.info());
         }
     }
 

@@ -17,11 +17,6 @@ public class ConsoleIO implements IO {
     }
 
     @Override
-    public void println(Object value) {
-        this.out.println(value);
-    }
-
-    @Override
     public void print(Object value) {
         this.out.print(value);
     }

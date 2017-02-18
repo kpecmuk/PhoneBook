@@ -4,20 +4,21 @@ import ru.kpecmuk.phone_book.I_PhoneBook;
 
 /**
  * @author kpecmuk
- * @since 14.02.17
+ * @since 18.02.2017
  */
-public class AddContactAction implements Action {
-
+public class ExitAction implements Action {
     @Override
     public void execute(I_PhoneBook phoneBook) {
-        System.out.println("add contact");
+        System.out.println("Save & Exit");
     }
 
+    @Override
     public String info() {
-        return this.key() + " - Add new contact\n";
+        return (this.key() + " - Exit program\n");
     }
 
+    @Override
     public int key() {
-        return 1;
+        return 5;
     }
 }
