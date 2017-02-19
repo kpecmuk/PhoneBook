@@ -12,7 +12,11 @@ public interface I_Contact {
 
     String getName();
 
+    void setName(String name);
+
+    int getId();
+
+    void setId(int id);
+
     List<String> getPhones();
-
-
 }

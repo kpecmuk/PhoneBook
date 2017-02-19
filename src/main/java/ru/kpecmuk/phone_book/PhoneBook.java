@@ -22,32 +22,31 @@ public class PhoneBook implements I_PhoneBook {
     private final Logger logger = LoggerFactory.getLogger(PhoneBook.class.getSimpleName());
     private final AtomicInteger contactIds = new AtomicInteger();
     private final AtomicInteger phoneIds = new AtomicInteger();
-    private final Map<Integer, I_Contact> contacts = new LinkedHashMap<>();
+    private Map<Integer, I_Contact> contacts = new LinkedHashMap<>();
 
     @Override
-    public void viewContacts(I_PhoneBook phoneBook, Validator validator) {
+    public void viewContacts(Validator validator) {
         for (I_Contact contact : contacts.values()) {
             validator.showText(contact.getName() + "\n");
         }
     }
 
     @Override
-    public void addContact(I_PhoneBook phoneBook, Validator validator) {
-        this.contacts.put
-                (contactIds.incrementAndGet(),
-                        new Contact(validator.getString("Enter contact name: ")));
-        this.viewContacts(phoneBook, validator);
+    public void addContact(Contact contact) {
+        contact.setId(contactIds.incrementAndGet());
+        this.contacts.put(contact.getId(), contact);
     }
 
     @Override
-    public void deleteContact(I_PhoneBook phoneBook, Validator validator) {
-        try {
-            this.contacts.remove(validator.getString("Enter contact name: "));
-        } catch (Exception e) {
-            validator.showText("Nothing to remove\n");
-        } finally {
-            this.viewContacts(phoneBook, validator);
+    public void deleteContact(String contactName, Validator validator) {
+
+        for (I_Contact contact : contacts.values()) {
+            if (contact.getName().equals(contactName)) {
+                this.contacts.remove(contact.getId());
+                break;
+            }
         }
+        this.viewContacts(validator);
     }
 
     @Override

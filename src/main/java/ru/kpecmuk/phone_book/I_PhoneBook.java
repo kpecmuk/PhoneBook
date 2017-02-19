@@ -9,11 +9,11 @@ import ru.kpecmuk.phone_book.tools.Validator;
  * @since 14.02.17
  */
 public interface I_PhoneBook {
-    void viewContacts(I_PhoneBook phoneBook, Validator validator);
+    void viewContacts(Validator validator);
 
-    void addContact(I_PhoneBook phoneBook, Validator validator);
+    void addContact(Contact contact);
 
-    void deleteContact(I_PhoneBook phoneBook, Validator validator);
+    void deleteContact(String contactName, Validator validator);
 
     void addPhone(String phoneNumber, Validator validator);
 

@@ -14,7 +14,7 @@ public class DeleteContactAction implements Action {
 
     @Override
     public void execute(I_PhoneBook phoneBook, Validator validator) {
-        phoneBook.deleteContact(phoneBook, validator);
+        phoneBook.deleteContact(validator.getString("Enter contact name: "), validator);
     }
 
     public String info() {

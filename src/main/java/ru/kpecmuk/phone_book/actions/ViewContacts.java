@@ -14,7 +14,7 @@ public class ViewContacts implements Action {
 
     @Override
     public void execute(I_PhoneBook phoneBook, Validator validator) {
-        phoneBook.viewContacts(phoneBook, validator);
+        phoneBook.viewContacts(validator);
     }
 
     @Override

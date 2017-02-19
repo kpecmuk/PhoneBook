@@ -14,6 +14,7 @@ import java.util.List;
  */
 public class Contact implements I_Contact {
     private final Logger logger = LoggerFactory.getLogger(Contact.class.getSimpleName());
+    private int id;
     private String name;
     private List<String> phones;
 
@@ -27,6 +28,18 @@ public class Contact implements I_Contact {
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public List<String> getPhones() {
