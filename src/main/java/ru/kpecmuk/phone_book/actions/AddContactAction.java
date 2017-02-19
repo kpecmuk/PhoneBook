@@ -15,8 +15,7 @@ public class AddContactAction implements Action {
 
     @Override
     public void execute(I_PhoneBook phoneBook, Validator validator) {
-        Contact contact = new Contact(validator.getString("Enter contact name: "));
-        phoneBook.addContact(contact);
+        phoneBook.addContact(new Contact(validator.getString("Enter contact name: ")));
     }
 
     public String info() {

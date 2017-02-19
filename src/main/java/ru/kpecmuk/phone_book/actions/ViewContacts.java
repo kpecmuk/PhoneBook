@@ -19,7 +19,7 @@ public class ViewContacts implements Action {
 
     @Override
     public String info() {
-        return (this.key() + " - View all phonebook\n");
+        return (this.key() + " - View PhoneBook\n");
     }
 
     @Override
