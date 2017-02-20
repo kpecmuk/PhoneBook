@@ -15,9 +15,9 @@ import java.util.Map;
  */
 public class Contact implements I_Contact {
     private final Logger logger = LoggerFactory.getLogger(Contact.class.getSimpleName());
-    private int id;
     private final String name;
     private final Map<Integer, PhoneNumber> phoneNumbers = new LinkedHashMap<>();
+    private int id;
 
     public Contact(String name) {
         this.name = name;

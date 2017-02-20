@@ -10,6 +10,7 @@ import ru.kpecmuk.phone_book.tools.Validator;
  * @since 18.02.2017
  */
 public class ViewContacts implements Action {
+    private static final int VIEW_CONTACTS_KEY = 1;
     private final Logger logger = LoggerFactory.getLogger(ViewContacts.class.getSimpleName());
 
     @Override
@@ -24,6 +25,6 @@ public class ViewContacts implements Action {
 
     @Override
     public int key() {
-        return 1;
+        return VIEW_CONTACTS_KEY;
     }
 }

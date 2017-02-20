@@ -8,6 +8,9 @@ import ru.kpecmuk.phone_book.tools.Validator;
  * @since 20.02.2017
  */
 public class AddPhoneNumber implements Action {
+
+    private static final int ADD_PHONE_KEY = 4;
+
     @Override
     public void execute(I_PhoneBook phoneBook, Validator validator) {
         String contactName = validator.getString("Enter contact name: ");
@@ -22,6 +25,6 @@ public class AddPhoneNumber implements Action {
 
     @Override
     public int key() {
-        return 4;
+        return ADD_PHONE_KEY;
     }
 }
