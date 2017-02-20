@@ -14,7 +14,7 @@ import java.io.IOException;
  * @author kpecmuk
  * @since 14.02.17
  */
-public class PhoneBookRunner {
+class PhoneBookRunner {
     private final Logger logger = LoggerFactory.getLogger(PhoneBookRunner.class.getSimpleName());
 
     public static void main(String[] args) throws IOException {

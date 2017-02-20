@@ -12,7 +12,7 @@ import java.io.IOException;
  */
 public class Validator implements Closeable {
     private final Logger logger = LoggerFactory.getLogger(Validator.class.getSimpleName());
-    private IO io;
+    private final IO io;
 
     public Validator(IO io) {
         this.io = io;

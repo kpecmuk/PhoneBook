@@ -1,5 +1,7 @@
 package ru.kpecmuk.phone_book.actions;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.kpecmuk.phone_book.I_PhoneBook;
 import ru.kpecmuk.phone_book.tools.Validator;
 
@@ -8,8 +10,8 @@ import ru.kpecmuk.phone_book.tools.Validator;
  * @since 20.02.2017
  */
 public class AddPhoneNumber implements Action {
-
     private static final int ADD_PHONE_KEY = 4;
+    private final Logger logger = LoggerFactory.getLogger(AddPhoneNumber.class.getSimpleName());
 
     @Override
     public void execute(I_PhoneBook phoneBook, Validator validator) {

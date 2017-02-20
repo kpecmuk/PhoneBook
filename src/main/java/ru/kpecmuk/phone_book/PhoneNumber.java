@@ -9,17 +9,17 @@ import org.slf4j.LoggerFactory;
  * @author kpecmuk
  * @since 15.02.2017
  */
-public class PhoneNumber {
+class PhoneNumber {
     private final Logger logger = LoggerFactory.getLogger(PhoneBook.class.getSimpleName());
-    private String phoneNumber;
-    private int id;
+    private final String phoneNumber;
+    private final int id;
 
-    public PhoneNumber(int id, String phoneNumber) {
+    PhoneNumber(int id, String phoneNumber) {
         this.id = id;
         this.phoneNumber = phoneNumber;
     }
 
-    public int getId() {
+    int getId() {
         return this.id;
     }
 }

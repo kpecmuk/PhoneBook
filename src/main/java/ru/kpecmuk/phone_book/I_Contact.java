@@ -6,7 +6,7 @@ import java.util.Map;
  * @author kpecmuk
  * @since 15.02.2017
  */
-public interface I_Contact {
+interface I_Contact {
 
     String getName();
 
