@@ -3,7 +3,8 @@ package ru.kpecmuk.phone_book;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  * ОПИСАНИЕ КОНТАКТА, имя, список номеров
@@ -15,23 +16,15 @@ import java.util.List;
 public class Contact implements I_Contact {
     private final Logger logger = LoggerFactory.getLogger(Contact.class.getSimpleName());
     private int id;
-    private String name;
-    private List<String> phones;
+    private final String name;
+    private final Map<Integer, PhoneNumber> phoneNumbers = new LinkedHashMap<>();
 
     public Contact(String name) {
         this.name = name;
     }
 
-    public void addPhoneNumber(String number) {
-        phones.add(number);
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getId() {
@@ -42,7 +35,7 @@ public class Contact implements I_Contact {
         this.id = id;
     }
 
-    public List<String> getPhones() {
-        return phones;
+    public Map<Integer, PhoneNumber> getPhoneNumbers() {
+        return this.phoneNumbers;
     }
 }

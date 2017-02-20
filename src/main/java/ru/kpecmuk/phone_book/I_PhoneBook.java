@@ -13,9 +13,9 @@ public interface I_PhoneBook {
 
     void addContact(Contact contact);
 
-    void deleteContact(String contactName, Validator validator);
+    void deleteContact(String contactName);
 
-    void addPhone(String phoneNumber, Validator validator);
+    void addPhoneNumber(String name, String phoneNumber);
 
     void deletePhone(String phoneNumber, Validator validator);
 }

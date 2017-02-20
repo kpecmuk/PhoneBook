@@ -2,10 +2,7 @@ package ru.kpecmuk.phone_book;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.kpecmuk.phone_book.actions.AddContactAction;
-import ru.kpecmuk.phone_book.actions.DeleteContactAction;
-import ru.kpecmuk.phone_book.actions.ExitAction;
-import ru.kpecmuk.phone_book.actions.ViewContacts;
+import ru.kpecmuk.phone_book.actions.*;
 
 import java.io.IOException;
 
@@ -27,6 +24,7 @@ public class PhoneBookRunner {
         ui.loadAction(new ViewContacts());
         ui.loadAction(new AddContactAction());
         ui.loadAction(new DeleteContactAction());
+        ui.loadAction(new AddPhoneNumber());
         ui.loadAction(new ExitAction());
         ui.show();
         ui.close();

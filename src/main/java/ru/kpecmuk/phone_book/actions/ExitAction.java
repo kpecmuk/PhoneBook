@@ -10,6 +10,7 @@ import ru.kpecmuk.phone_book.tools.Validator;
  * @since 18.02.2017
  */
 public class ExitAction implements Action {
+    public static final int EXIT_KEY = 5;
     private final Logger logger = LoggerFactory.getLogger(ExitAction.class.getSimpleName());
 
     @Override
@@ -24,6 +25,6 @@ public class ExitAction implements Action {
 
     @Override
     public int key() {
-        return 5;
+        return EXIT_KEY;
     }
 }

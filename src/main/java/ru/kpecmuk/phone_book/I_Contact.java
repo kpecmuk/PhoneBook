@@ -1,6 +1,6 @@
 package ru.kpecmuk.phone_book;
 
-import java.util.List;
+import java.util.Map;
 
 /**
  * @author kpecmuk
@@ -8,15 +8,11 @@ import java.util.List;
  */
 public interface I_Contact {
 
-    void addPhoneNumber(String number);
-
     String getName();
-
-    void setName(String name);
 
     int getId();
 
     void setId(int id);
 
-    List<String> getPhones();
+    Map<Integer, PhoneNumber> getPhoneNumbers();
 }

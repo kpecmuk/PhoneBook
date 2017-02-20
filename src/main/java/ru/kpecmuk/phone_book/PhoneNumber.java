@@ -3,6 +3,8 @@ package ru.kpecmuk.phone_book;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Arrays;
+
 /**
  * Объект - телефонный номер
  *
@@ -11,11 +13,19 @@ import org.slf4j.LoggerFactory;
  */
 public class PhoneNumber {
     private final Logger logger = LoggerFactory.getLogger(PhoneBook.class.getSimpleName());
-    private final String phoneNumber;
-    private final int id;
+    private String phoneNumber;
+    private int id;
 
     public PhoneNumber(int id, String phoneNumber) {
+        this.id = id;
         this.phoneNumber = phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setId(int id) {
         this.id = id;
     }
 

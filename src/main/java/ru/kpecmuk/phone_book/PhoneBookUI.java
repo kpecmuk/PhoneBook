@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import static ru.kpecmuk.phone_book.actions.ExitAction.EXIT_KEY;
+
 /**
  * Меню интерфейса
  *
@@ -36,7 +38,7 @@ public class PhoneBookUI {
         do {
             this.info(this.actionMenu);
             int action = validator.getInt("> Your action: ");
-            if (action == 5) {
+            if (action == EXIT_KEY) {
                 doAction(5);
                 this.close();
                 break;
