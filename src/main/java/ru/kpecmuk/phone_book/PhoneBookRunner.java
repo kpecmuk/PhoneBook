@@ -25,6 +25,7 @@ class PhoneBookRunner {
         ui.loadAction(new AddContactAction());
         ui.loadAction(new DeleteContactAction());
         ui.loadAction(new AddPhoneNumber());
+        ui.loadAction(new DeletePhoneAction());
         ui.loadAction(new ExitAction());
         ui.show();
         ui.close();

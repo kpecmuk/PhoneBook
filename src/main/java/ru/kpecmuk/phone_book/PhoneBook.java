@@ -26,7 +26,6 @@ public class PhoneBook implements I_PhoneBook {
 
     /**
      * Просмотр списка контактов, пока без номеров
-     * TODO исправить кривой просмотр номеров
      */
     @Override
     public void viewContacts(Validator validator) {
@@ -81,12 +80,25 @@ public class PhoneBook implements I_PhoneBook {
         PhoneNumber phoneNumber = new PhoneNumber(phoneIds.incrementAndGet(), number);
         for (I_Contact contact : contacts.values()) {
             if (name.equals(contact.getName())) {
-                contact.getPhoneNumbers().put(phoneNumber.getId(), phoneNumber);
+                contact.getPhoneNumberMap().put(phoneNumber.getID(), phoneNumber);
             }
         }
     }
 
+    /**
+     * Удаление телефонного номера.
+     * Номер ищем по всем контактам и удаляем
+     *
+     * @param phoneNumber номер телефона, который будет удалён
+     */
     @Override
-    public void deletePhone(String phoneNumber, Validator validator) {
+    public void deletePhoneNumber(String phoneNumber) {
+        for (I_Contact contact : this.contacts.values()) {
+            for (I_PhoneNumber phone : contact.getPhoneNumberMap().values()) {
+                if (phoneNumber.equals(phone.getPhoneNumber())) {
+                    contact.getPhoneNumberMap().remove(phone.getID());
+                }
+            }
+        }
     }
 }

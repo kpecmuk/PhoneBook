@@ -39,7 +39,7 @@ class PhoneBookUI {
             this.info(this.actionMenu);
             int action = validator.getInt("> Your action: ");
             if (action == EXIT_KEY) {
-                doAction(5);
+                doAction(EXIT_KEY);
                 this.close();
                 break;
             } else

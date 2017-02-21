@@ -16,7 +16,7 @@ import java.util.Map;
 public class Contact implements I_Contact {
     private final Logger logger = LoggerFactory.getLogger(Contact.class.getSimpleName());
     private final String name;
-    private final Map<Integer, PhoneNumber> phoneNumbers = new LinkedHashMap<>();
+    private final Map<Integer, I_PhoneNumber> phoneNumberMap = new LinkedHashMap<>();
     private int id;
 
     public Contact(String name) {
@@ -39,11 +39,11 @@ public class Contact implements I_Contact {
     public String toString() {
         logger.info("inside contact toString()");
         String result = this.name;
-        if (phoneNumbers.isEmpty()) {
+        if (phoneNumberMap.isEmpty()) {
             result += " --> Phone numbers not found\n";
         } else {
             result += " --> ";
-            for (PhoneNumber phone : this.phoneNumbers.values()) {
+            for (I_PhoneNumber phone : this.phoneNumberMap.values()) {
                 result += phone.getPhoneNumber() + "   ";
             }
             result += "\n";
@@ -51,8 +51,7 @@ public class Contact implements I_Contact {
         return result;
     }
 
-    @Override
-    public Map<Integer, PhoneNumber> getPhoneNumbers() {
-        return this.phoneNumbers;
+    public Map<Integer, I_PhoneNumber> getPhoneNumberMap() {
+        return this.phoneNumberMap;
     }
 }

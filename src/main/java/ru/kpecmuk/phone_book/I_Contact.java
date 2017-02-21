@@ -14,5 +14,5 @@ interface I_Contact {
 
     void setId(int id);
 
-    Map<Integer, PhoneNumber> getPhoneNumbers();
+    Map<Integer, I_PhoneNumber> getPhoneNumberMap();
 }

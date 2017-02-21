@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
  * @author kpecmuk
  * @since 15.02.2017
  */
-class PhoneNumber {
+class PhoneNumber implements I_PhoneNumber {
     private final Logger logger = LoggerFactory.getLogger(PhoneBook.class.getSimpleName());
     private final String phoneNumber;
     private final int id;
@@ -19,7 +19,7 @@ class PhoneNumber {
         this.phoneNumber = phoneNumber;
     }
 
-    int getId() {
+    public int getID() {
         return this.id;
     }
 
