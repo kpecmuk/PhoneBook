@@ -22,4 +22,8 @@ class PhoneNumber {
     int getId() {
         return this.id;
     }
+
+    public String getPhoneNumber() {
+        return this.phoneNumber;
+    }
 }

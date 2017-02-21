@@ -35,6 +35,23 @@ public class Contact implements I_Contact {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        logger.info("inside contact toString()");
+        String result = this.name;
+        if (phoneNumbers.isEmpty()) {
+            result += " --> Phone numbers not found\n";
+        } else {
+            result += " --> ";
+            for (PhoneNumber phone : this.phoneNumbers.values()) {
+                result += phone.getPhoneNumber() + "   ";
+            }
+            result += "\n";
+        }
+        return result;
+    }
+
+    @Override
     public Map<Integer, PhoneNumber> getPhoneNumbers() {
         return this.phoneNumbers;
     }

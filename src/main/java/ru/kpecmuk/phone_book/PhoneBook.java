@@ -31,8 +31,7 @@ public class PhoneBook implements I_PhoneBook {
     @Override
     public void viewContacts(Validator validator) {
         for (I_Contact contact : contacts.values()) {
-            validator.showText(contact.getName() + "\n");
-            validator.showText("----- " + contact.getPhoneNumbers().values() + "\n");
+            validator.showText(contact.toString());
         }
     }
 
