@@ -11,16 +11,17 @@ import ru.kpecmuk.phone_book.tools.Validator;
  */
 public class ExitAction implements Action {
     public static final int EXIT_KEY = 6;
+    private final String actionIntro = " - Exit program\n";
     private final Logger logger = LoggerFactory.getLogger(ExitAction.class.getSimpleName());
 
     @Override
     public void execute(I_PhoneBook phoneBook, Validator validator) {
-        System.out.println("Save & Exit");
+        logger.info("Running action " + actionIntro);
     }
 
     @Override
     public String info() {
-        return (this.key() + " - Exit program\n");
+        return (this.key() + actionIntro);
     }
 
     @Override

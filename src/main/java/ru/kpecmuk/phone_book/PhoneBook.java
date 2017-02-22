@@ -25,7 +25,7 @@ public class PhoneBook implements I_PhoneBook {
     private final Map<Integer, I_Contact> contacts = new LinkedHashMap<>();
 
     /**
-     * Просмотр списка контактов, пока без номеров
+     * Просмотр списка контактов с номерами
      */
     @Override
     public void viewContacts(Validator validator) {
@@ -42,16 +42,16 @@ public class PhoneBook implements I_PhoneBook {
      *                ID - необходимый параметр для дальнейшей работы с MAP
      */
     @Override
-    public void addContact(Contact contact) {
+    public void addContact(I_Contact contact) {
         for (I_Contact contactExist : contacts.values()) {
-            if (contactExist.getName().equals(contact.getName())) {
+            if (contactExist.getContactName().equals(contact.getContactName())) {
                 logger.info("Contact " + contact + " already exist");
                 return;
             }
         }
-        contact.setId(contactIds.incrementAndGet());
-        this.contacts.put(contact.getId(), contact);
-        logger.info("Contact " + contact.getName() + " added");
+        contact.setContactID(contactIds.incrementAndGet());
+        this.contacts.put(contact.getContactID(), contact);
+        logger.info("Contact " + contact.getContactName() + " added");
     }
 
     /**
@@ -62,8 +62,8 @@ public class PhoneBook implements I_PhoneBook {
     @Override
     public void deleteContact(String contactName) {
         for (I_Contact contact : contacts.values()) {
-            if (contact.getName().equals(contactName)) {
-                this.contacts.remove(contact.getId());
+            if (contact.getContactName().equals(contactName)) {
+                this.contacts.remove(contact.getContactID());
                 logger.info("Contact " + contactName + " deleted");
                 break;
             }
@@ -74,23 +74,38 @@ public class PhoneBook implements I_PhoneBook {
      * Сразу создали объект телефонного номера с ID и номером
      * Далее ищем тот контакт куда добавляем номер.
      *
-     * @param name   CONTACT NAME
-     * @param number PHONE NUMBER
+     * @param contactName   CONTACT NAME
+     * @param contactNumber PHONE NUMBER
      */
     @Override
-    public void addPhoneNumber(String name, String number) {
-        PhoneNumber phoneNumber = new PhoneNumber(phoneIds.incrementAndGet(), number);
+    public void addPhoneNumber(String contactName, String contactNumber) {
+        boolean newContact = true;
         for (I_Contact contact : contacts.values()) {
-            if (name.equals(contact.getName())) {
+            if (contactName.equals(contact.getContactName())) {
+                newContact = false;                 // имя контакта найдено
                 try {
-                    contact.getPhoneNumberID(number);
+                    contact.getPhoneNumberID(contactNumber);
                     logger.info("Phone number already exist");
                 } catch (UnsupportedOperationException e) { // мы тут, значит такого номера нет
+                    PhoneNumber phoneNumber = new PhoneNumber(phoneIds.incrementAndGet(), contactNumber);
                     contact.getPhoneNumberMap().put(phoneNumber.getID(), phoneNumber);
-                    logger.info("Phone " + number + " added to " + contact.getName());
+                    logger.info("Phone " + contactNumber + " added to " + contact.getContactName());
                 }
             }
         }
+        if (newContact) {
+            logger.info("No contact found. Creating new contact and phone number");
+            addNewContactAndPhone(contactName, contactNumber);
+        }
+    }
+
+    /**
+     * Если мы сюда попали, значит мы пытались добавить номер в несуществующий контакт
+     * Сразу создаём 2 объекта - имя контакта и телефон
+     */
+    private void addNewContactAndPhone(String contactName, String contactNumber) {
+        addContact(new Contact(contactName));
+        addPhoneNumber(contactName, contactNumber);
     }
 
     /**

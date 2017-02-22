@@ -11,16 +11,18 @@ import ru.kpecmuk.phone_book.tools.Validator;
  */
 public class ViewContacts implements Action {
     private static final int VIEW_CONTACTS_KEY = 1;
+    private final String actionIntro = " - View contacts\n";
     private final Logger logger = LoggerFactory.getLogger(ViewContacts.class.getSimpleName());
 
     @Override
     public void execute(I_PhoneBook phoneBook, Validator validator) {
+        logger.info("Running action " + actionIntro);
         phoneBook.viewContacts(validator);
     }
 
     @Override
     public String info() {
-        return (this.key() + " - View PhoneBook\n");
+        return (this.key() + actionIntro);
     }
 
     @Override

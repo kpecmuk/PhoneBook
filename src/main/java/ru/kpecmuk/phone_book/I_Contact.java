@@ -8,11 +8,11 @@ import java.util.Map;
  */
 interface I_Contact {
 
-    String getName();
+    String getContactName();
 
-    int getId();
+    int getContactID();
 
-    void setId(int id);
+    void setContactID(int id);
 
     Map<Integer, I_PhoneNumber> getPhoneNumberMap();
 

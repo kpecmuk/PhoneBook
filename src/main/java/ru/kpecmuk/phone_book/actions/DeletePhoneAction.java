@@ -11,16 +11,18 @@ import ru.kpecmuk.phone_book.tools.Validator;
  */
 public class DeletePhoneAction implements Action {
     private static final int DELETE_PHONE_NUMBER = 5;
+    private final String actionIntro = " - Delete phone number\n";
     private final Logger logger = LoggerFactory.getLogger(DeletePhoneAction.class.getSimpleName());
 
     @Override
     public void execute(I_PhoneBook phoneBook, Validator validator) {
+        logger.info("Running action " + actionIntro);
         phoneBook.deletePhoneNumber(validator.getString("Enter phone number: "));
     }
 
     @Override
     public String info() {
-        return (this.key() + " - Delete phone number\n");
+        return (this.key() + actionIntro);
     }
 
     @Override

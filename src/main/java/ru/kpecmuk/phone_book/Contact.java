@@ -24,17 +24,17 @@ public class Contact implements I_Contact {
     }
 
     @Override
-    public String getName() {
+    public String getContactName() {
         return name;
     }
 
     @Override
-    public int getId() {
+    public int getContactID() {
         return id;
     }
 
     @Override
-    public void setId(int id) {
+    public void setContactID(int id) {
         this.id = id;
     }
 
