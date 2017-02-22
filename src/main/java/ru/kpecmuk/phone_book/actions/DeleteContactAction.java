@@ -10,7 +10,7 @@ import ru.kpecmuk.phone_book.tools.Validator;
  * @since 14.02.17
  */
 public class DeleteContactAction implements Action {
-    private final int DELETE_CONTACT_KEY = 3;
+    private static final int DELETE_CONTACT_KEY = 3;
     private final Logger logger = LoggerFactory.getLogger(DeleteContactAction.class.getSimpleName());
 
     @Override

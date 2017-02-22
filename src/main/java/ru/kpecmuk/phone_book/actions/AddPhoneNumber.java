@@ -10,7 +10,7 @@ import ru.kpecmuk.phone_book.tools.Validator;
  * @since 20.02.2017
  */
 public class AddPhoneNumber implements Action {
-    private final int ADD_PHONE_KEY = 4;
+    private static final int ADD_PHONE_KEY = 4;
     private final Logger logger = LoggerFactory.getLogger(AddPhoneNumber.class.getSimpleName());
 
     @Override

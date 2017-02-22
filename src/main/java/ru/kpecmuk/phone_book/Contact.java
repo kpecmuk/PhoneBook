@@ -1,9 +1,7 @@
 package ru.kpecmuk.phone_book;
 
-import com.sun.org.apache.xpath.internal.operations.Neg;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sun.invoke.empty.Empty;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -42,7 +40,6 @@ public class Contact implements I_Contact {
 
     @Override
     public String toString() {
-        logger.info("inside contact toString()");
         String result = this.name;
         if (phoneNumberMap.isEmpty()) {
             result += " --> Phone numbers not found\n";
@@ -62,7 +59,7 @@ public class Contact implements I_Contact {
     }
 
     @Override
-    public I_PhoneNumber findPhoneNumber(String phoneNumber) {
+    public I_PhoneNumber getPhoneNumberID(String phoneNumber) {
         for (I_PhoneNumber phone : this.phoneNumberMap.values()) {
             if (phoneNumber.equals(phone.getPhoneNumber())) {
                 return this.phoneNumberMap.get(phone.getID());

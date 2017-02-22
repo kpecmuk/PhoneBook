@@ -15,11 +15,12 @@ import java.io.IOException;
  * @since 14.02.17
  */
 class PhoneBookRunner {
-    private final Logger logger = LoggerFactory.getLogger(PhoneBookRunner.class.getSimpleName());
+    private static final Logger logger = LoggerFactory.getLogger(PhoneBookRunner.class.getSimpleName());
 
     public static void main(String[] args) throws IOException {
 
         PhoneBookUI ui = new PhoneBookUI();
+        logger.info(ui + " created!");
 
         ui.loadAction(new ViewContacts());
         ui.loadAction(new AddContactAction());

@@ -10,7 +10,7 @@ import ru.kpecmuk.phone_book.tools.Validator;
  * @since 18.02.2017
  */
 public class ViewContacts implements Action {
-    private final int VIEW_CONTACTS_KEY = 1;
+    private static final int VIEW_CONTACTS_KEY = 1;
     private final Logger logger = LoggerFactory.getLogger(ViewContacts.class.getSimpleName());
 
     @Override

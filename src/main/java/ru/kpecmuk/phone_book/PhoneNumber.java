@@ -20,10 +20,12 @@ class PhoneNumber implements I_PhoneNumber {
     }
 
     public int getID() {
+        logger.info("returning phone number ID - " + this.id);
         return this.id;
     }
 
     public String getPhoneNumber() {
+        logger.info("returning phone number - " + this.phoneNumber);
         return this.phoneNumber;
     }
 }
