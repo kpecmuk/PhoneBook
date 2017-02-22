@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.kpecmuk.phone_book.tools.Validator;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -88,7 +89,6 @@ public class PhoneBook implements I_PhoneBook {
     /**
      * Удаление телефонного номера.
      * Номер ищем по всем контактам и удаляем
-     * TODO исправить ошибку. идет удаление коллекции по которой перемещаемся
      *
      * @param phoneNumber номер телефона, который будет удалён
      */
@@ -98,6 +98,7 @@ public class PhoneBook implements I_PhoneBook {
             for (I_PhoneNumber phone : contact.getPhoneNumberMap().values()) {
                 if (phoneNumber.equals(phone.getPhoneNumber())) {
                     contact.getPhoneNumberMap().remove(phone.getID());
+                    break;
                 }
             }
         }
