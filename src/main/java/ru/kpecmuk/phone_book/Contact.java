@@ -1,7 +1,9 @@
 package ru.kpecmuk.phone_book;
 
+import com.sun.org.apache.xpath.internal.operations.Neg;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import sun.invoke.empty.Empty;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -23,14 +25,17 @@ public class Contact implements I_Contact {
         this.name = name;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public int getId() {
         return id;
     }
 
+    @Override
     public void setId(int id) {
         this.id = id;
     }
@@ -51,7 +56,18 @@ public class Contact implements I_Contact {
         return result;
     }
 
+    @Override
     public Map<Integer, I_PhoneNumber> getPhoneNumberMap() {
         return this.phoneNumberMap;
+    }
+
+    @Override
+    public I_PhoneNumber findPhoneNumber(String phoneNumber) {
+        for (I_PhoneNumber phone : this.phoneNumberMap.values()) {
+            if (phoneNumber.equals(phone.getPhoneNumber())) {
+                return this.phoneNumberMap.get(phone.getID());
+            }
+        }
+        throw new UnsupportedOperationException();
     }
 }

@@ -15,4 +15,6 @@ interface I_Contact {
     void setId(int id);
 
     Map<Integer, I_PhoneNumber> getPhoneNumberMap();
+
+    I_PhoneNumber findPhoneNumber(String phoneNumber);
 }

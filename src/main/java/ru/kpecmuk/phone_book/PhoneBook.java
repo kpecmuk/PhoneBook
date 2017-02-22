@@ -94,12 +94,11 @@ public class PhoneBook implements I_PhoneBook {
      */
     @Override
     public void deletePhoneNumber(String phoneNumber) {
-        for (I_Contact contact : this.contacts.values()) {
-            for (I_PhoneNumber phone : contact.getPhoneNumberMap().values()) {
-                if (phoneNumber.equals(phone.getPhoneNumber())) {
-                    contact.getPhoneNumberMap().remove(phone.getID());
-                    break;
-                }
+        for (I_Contact contact : contacts.values()) {
+            try {
+                contact.getPhoneNumberMap().values().remove(contact.findPhoneNumber(phoneNumber));
+            } catch (UnsupportedOperationException e) {
+                logger.info("Nothing found");
             }
         }
     }
