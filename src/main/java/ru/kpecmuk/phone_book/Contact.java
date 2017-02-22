@@ -8,7 +8,7 @@ import java.util.Map;
 
 /**
  * ОПИСАНИЕ КОНТАКТА, имя, список номеров
- * возможно добавятся ещё свойства
+ * phoneNumberMap - карта телефонных номеров (id, I_PhoneNumber)
  *
  * @author kpecmuk
  * @since 15.02.17
@@ -25,16 +25,19 @@ public class Contact implements I_Contact {
 
     @Override
     public String getContactName() {
-        return name;
+        logger.info(" returning " + this.name);
+        return this.name;
     }
 
     @Override
     public int getContactID() {
-        return id;
+        logger.info(" returning " + this.id);
+        return this.id;
     }
 
     @Override
     public void setContactID(int id) {
+        logger.info(" setting " + id);
         this.id = id;
     }
 
@@ -59,7 +62,7 @@ public class Contact implements I_Contact {
     }
 
     @Override
-    public I_PhoneNumber getPhoneNumberID(String phoneNumber) {
+    public I_PhoneNumber getPhoneIDbyNumber(String phoneNumber) {
         for (I_PhoneNumber phone : this.phoneNumberMap.values()) {
             if (phoneNumber.equals(phone.getPhoneNumber())) {
                 return this.phoneNumberMap.get(phone.getID());

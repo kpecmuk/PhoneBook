@@ -16,5 +16,5 @@ interface I_Contact {
 
     Map<Integer, I_PhoneNumber> getPhoneNumberMap();
 
-    I_PhoneNumber getPhoneNumberID(String phoneNumber);
+    I_PhoneNumber getPhoneIDbyNumber(String phoneNumber);
 }

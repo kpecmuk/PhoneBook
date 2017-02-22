@@ -11,7 +11,7 @@ import ru.kpecmuk.phone_book.tools.Validator;
 public interface I_PhoneBook {
     void viewContacts(Validator validator);
 
-    void addContact(I_Contact contact);
+    void addContact(String contactName);
 
     void deleteContact(String contactName);
 

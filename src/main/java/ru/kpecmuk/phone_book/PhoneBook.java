@@ -29,29 +29,33 @@ public class PhoneBook implements I_PhoneBook {
      */
     @Override
     public void viewContacts(Validator validator) {
-        for (I_Contact contact : contacts.values()) {
-            validator.showText(contact.toString());
+        if (contacts.isEmpty()) validator.showText("Empty\n");
+        else {
+            for (I_Contact contact : contacts.values()) {
+                validator.showText(contact.toString());
+            }
         }
     }
 
     /**
-     * Добавление контакта в MAP <> contacts
+     * Проверяем не дублиуем ли имя
+     * Если нет, то создаем объект Contact, задаем ему ИМЯ и ID
+     * Добавляем контакт в MAP <> contacts
+     * ID - необходимый параметр для дальнейшей работы с MAP
      *
-     * @param contact контакт уже с именем, далее здесь ему присваивается ID
-     *                и затем всё это кладем в MAP <> contacts
-     *                ID - необходимый параметр для дальнейшей работы с MAP
+     * @param contactName имя контакта
      */
     @Override
-    public void addContact(I_Contact contact) {
-        for (I_Contact contactExist : contacts.values()) {
-            if (contactExist.getContactName().equals(contact.getContactName())) {
-                logger.info("Contact " + contact + " already exist");
-                return;
-            }
+    public void addContact(String contactName) {
+        try {
+            findContact(contactName);
+            logger.info("Contact " + contactName + " already exist");
+        } catch (UnsupportedOperationException e) {
+            I_Contact contact = new Contact(contactName);
+            contact.setContactID(contactIds.incrementAndGet());
+            this.contacts.put(contact.getContactID(), contact);
+            logger.info("Contact " + contact.getContactName() + " added");
         }
-        contact.setContactID(contactIds.incrementAndGet());
-        this.contacts.put(contact.getContactID(), contact);
-        logger.info("Contact " + contact.getContactName() + " added");
     }
 
     /**
@@ -61,12 +65,12 @@ public class PhoneBook implements I_PhoneBook {
      */
     @Override
     public void deleteContact(String contactName) {
-        for (I_Contact contact : contacts.values()) {
-            if (contact.getContactName().equals(contactName)) {
-                this.contacts.remove(contact.getContactID());
-                logger.info("Contact " + contactName + " deleted");
-                break;
-            }
+        try {
+            I_Contact contactIter = findContact(contactName);
+            this.contacts.remove(contactIter.getContactID());
+            logger.info("Contact " + contactName + " deleted");
+        } catch (UnsupportedOperationException e) {
+            logger.info("Contact " + contactName + " not found");
         }
     }
 
@@ -79,33 +83,45 @@ public class PhoneBook implements I_PhoneBook {
      */
     @Override
     public void addPhoneNumber(String contactName, String contactNumber) {
-        boolean newContact = true;
-        for (I_Contact contact : contacts.values()) {
-            if (contactName.equals(contact.getContactName())) {
-                newContact = false;                 // имя контакта найдено
-                try {
-                    contact.getPhoneNumberID(contactNumber);
-                    logger.info("Phone number already exist");
-                } catch (UnsupportedOperationException e) { // мы тут, значит такого номера нет
-                    PhoneNumber phoneNumber = new PhoneNumber(phoneIds.incrementAndGet(), contactNumber);
-                    contact.getPhoneNumberMap().put(phoneNumber.getID(), phoneNumber);
-                    logger.info("Phone " + contactNumber + " added to " + contact.getContactName());
-                }
-            }
-        }
-        if (newContact) {
-            logger.info("No contact found. Creating new contact and phone number");
+        I_Contact contactIter;
+        try {
+            contactIter = findContact(contactName);
+        } catch (UnsupportedOperationException e) {     // не нашли такое имя, будем создавать новый контакт
+            logger.info("Contact name not found");      // с номером телефона
             addNewContactAndPhone(contactName, contactNumber);
+            return;
         }
+        logger.info("Contact name " + contactIter.getContactName() + " found");
+        try {
+            contactIter.getPhoneIDbyNumber(contactNumber);
+            logger.info("Phone number already exist");
+        } catch (UnsupportedOperationException e) {             // мы тут, значит такого номера нет
+            PhoneNumber phoneNumber = new PhoneNumber(phoneIds.incrementAndGet(), contactNumber);
+            contactIter.getPhoneNumberMap().put(phoneNumber.getID(), phoneNumber);
+            logger.info("Phone " + contactNumber + " added to " + contactIter.getContactName());
+        }
+    }
+
+    /**
+     * @return итератор контакта или выкидываем ошибку
+     */
+    private I_Contact findContact(String contactName) {
+        for (I_Contact contact : contacts.values()) {
+            if (contactName.equals(contact.getContactName()))
+                return contact;
+        }
+        throw new UnsupportedOperationException();
     }
 
     /**
      * Если мы сюда попали, значит мы пытались добавить номер в несуществующий контакт
      * Сразу создаём 2 объекта - имя контакта и телефон
      */
+
     private void addNewContactAndPhone(String contactName, String contactNumber) {
-        addContact(new Contact(contactName));
-        addPhoneNumber(contactName, contactNumber);
+        logger.info("Creating new contact " + contactName + " and phone number " + contactNumber);
+        this.addContact(contactName);
+        this.addPhoneNumber(contactName, contactNumber);
     }
 
     /**
@@ -118,7 +134,7 @@ public class PhoneBook implements I_PhoneBook {
     public void deletePhoneNumber(String phoneNumber) {
         for (I_Contact contact : contacts.values()) {
             try {
-                contact.getPhoneNumberMap().values().remove(contact.getPhoneNumberID(phoneNumber));
+                contact.getPhoneNumberMap().values().remove(contact.getPhoneIDbyNumber(phoneNumber));
                 logger.info("Phone " + phoneNumber + " deleted");
             } catch (UnsupportedOperationException e) {
                 logger.info("Nothing found");
