@@ -117,7 +117,6 @@ public class PhoneBook implements I_PhoneBook {
      * Если мы сюда попали, значит мы пытались добавить номер в несуществующий контакт
      * Сразу создаём 2 объекта - имя контакта и телефон
      */
-
     private void addNewContactAndPhone(String contactName, String contactNumber) {
         logger.info("Creating new contact " + contactName + " and phone number " + contactNumber);
         this.addContact(contactName);

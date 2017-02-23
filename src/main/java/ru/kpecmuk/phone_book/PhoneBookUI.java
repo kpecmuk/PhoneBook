@@ -3,10 +3,12 @@ package ru.kpecmuk.phone_book;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.kpecmuk.phone_book.actions.Action;
+import ru.kpecmuk.phone_book.database.Connect;
 import ru.kpecmuk.phone_book.tools.ConsoleIO;
 import ru.kpecmuk.phone_book.tools.Validator;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -23,10 +25,12 @@ class PhoneBookUI {
     private final I_PhoneBook phoneBook = new PhoneBook();
     private final Map<Integer, Action> actionMenu = new ConcurrentHashMap<>();
     private final Validator validator;
+    private final Connect database;
 
-    PhoneBookUI() {
+    PhoneBookUI() throws SQLException {
         logger.info("Created : " + this.getClass().getSimpleName());
         this.validator = new Validator(new ConsoleIO());
+        database = new Connect("user", "user");
     }
 
     void loadAction(Action action) {
@@ -35,6 +39,7 @@ class PhoneBookUI {
     }
 
     void show() throws IOException {
+        validator.showText(this.database.checkConnection() ? "SQL Connected\n" : "SQL Error\n");
         do {
             this.info(this.actionMenu);
             int action = validator.getInt("> Your action: ");

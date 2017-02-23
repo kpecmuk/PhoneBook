@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import ru.kpecmuk.phone_book.actions.*;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 /**
  * ФАЙЛ ЗАПУСКА
@@ -17,7 +18,7 @@ import java.io.IOException;
 class PhoneBookRunner {
     private static final Logger logger = LoggerFactory.getLogger(PhoneBookRunner.class.getSimpleName());
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, SQLException {
 
         PhoneBookUI ui = new PhoneBookUI();
         logger.info(ui + " created!");

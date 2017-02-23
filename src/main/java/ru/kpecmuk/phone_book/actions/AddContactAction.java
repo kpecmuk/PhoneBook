@@ -11,7 +11,7 @@ import ru.kpecmuk.phone_book.tools.Validator;
  */
 public class AddContactAction implements Action {
     private static final int ADD_CONTACT_KEY = 2;
-    private final String actionIntro = " - New contact\n";
+    private final String actionIntro = " - Add new contact\n";
     private final Logger logger = LoggerFactory.getLogger(AddContactAction.class.getSimpleName());
 
     @Override
