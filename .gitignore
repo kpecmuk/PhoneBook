@@ -1,6 +1,7 @@
 test/
 .idea/
 target/
+src/main/resources/
 
 *.war
 *.ear
