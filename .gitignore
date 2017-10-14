@@ -1,8 +1,7 @@
 test/
 .idea/
 target/
-*.class
-*.jar
+
 *.war
 *.ear
 *.iml

@@ -42,13 +42,12 @@ class PhoneBookUI {
         validator.showText(this.database.checkConnection() ? "SQL Connected\n" : "SQL Error\n");
         do {
             this.info(this.actionMenu);
-            int action = validator.getInt("> Your action: ");
-            if (action == EXIT_KEY) {
-                doAction(EXIT_KEY);
+            int userAction = validator.getInt("> Your action: ");
+            doAction(userAction);
+            if (userAction == EXIT_KEY) {
                 this.close();
                 break;
-            } else
-                doAction(action);
+            }
         }
         while (true);
     }

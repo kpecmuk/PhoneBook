@@ -43,17 +43,17 @@ public class Contact implements I_Contact {
 
     @Override
     public String toString() {
-        String result = this.name;
+        StringBuilder result = new StringBuilder(this.name);
         if (phoneNumberMap.isEmpty()) {
-            result += " --> Phone numbers not found\n";
+            result.append(" --> Phone numbers not found\n");
         } else {
-            result += " --> ";
+            result.append(" --> ");
             for (I_PhoneNumber phone : this.phoneNumberMap.values()) {
-                result += phone.getPhoneNumber() + "   ";
+                result.append(phone.getPhoneNumber()).append("   ");
             }
-            result += "\n";
+            result.append("\n");
         }
-        return result;
+        return result.toString();
     }
 
     @Override
