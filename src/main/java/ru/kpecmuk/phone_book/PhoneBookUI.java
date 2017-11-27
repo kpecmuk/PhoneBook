@@ -3,7 +3,7 @@ package ru.kpecmuk.phone_book;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.kpecmuk.phone_book.actions.Action;
-import ru.kpecmuk.phone_book.database.Connect;
+import ru.kpecmuk.phone_book.database.Database;
 import ru.kpecmuk.phone_book.tools.ConsoleIO;
 import ru.kpecmuk.phone_book.tools.Validator;
 
@@ -22,15 +22,13 @@ import static ru.kpecmuk.phone_book.actions.ExitAction.EXIT_KEY;
  */
 class PhoneBookUI {
     private final Logger logger = LoggerFactory.getLogger(PhoneBookUI.class.getSimpleName());
-    private final I_PhoneBook phoneBook = new PhoneBook();
+    private final PhoneBook phoneBook = new PhoneBook();
     private final Map<Integer, Action> actionMenu = new ConcurrentHashMap<>();
-    private final Validator validator;
-    private final Connect database;
+    private final Validator validator = new Validator(new ConsoleIO());
+    private final Database database = new Database();
 
     PhoneBookUI() throws SQLException {
         logger.info("Created : " + this.getClass().getSimpleName());
-        this.validator = new Validator(new ConsoleIO());
-        database = new Connect("user", "user");
     }
 
     void loadAction(Action action) {

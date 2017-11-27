@@ -19,7 +19,7 @@ public class Contact implements I_Contact {
     private final Map<Integer, I_PhoneNumber> phoneNumberMap = new LinkedHashMap<>();
     private int id;
 
-    public Contact(String name) {
+    Contact(String name) {
         this.name = name;
     }
 

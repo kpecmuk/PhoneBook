@@ -46,7 +46,7 @@ public class PhoneBook implements I_PhoneBook {
      * @param contactName имя контакта
      */
     @Override
-    public void addContact(String contactName) {
+    public final void addContact(String contactName) {
         try {
             findContact(contactName);
             logger.info("Contact " + contactName + " already exist");
@@ -64,7 +64,7 @@ public class PhoneBook implements I_PhoneBook {
      * @param contactName имя контакта, по которому ведется поиск и удаление
      */
     @Override
-    public void deleteContact(String contactName) {
+    public final void deleteContact(String contactName) {
         try {
             I_Contact contactIter = findContact(contactName);
             this.contacts.remove(contactIter.getContactID());
@@ -82,7 +82,7 @@ public class PhoneBook implements I_PhoneBook {
      * @param contactNumber PHONE NUMBER
      */
     @Override
-    public void addPhoneNumber(String contactName, String contactNumber) {
+    public final void addPhoneNumber(String contactName, String contactNumber) {
         I_Contact contactIter;
         try {
             contactIter = findContact(contactName);
@@ -130,7 +130,7 @@ public class PhoneBook implements I_PhoneBook {
      * @param phoneNumber номер телефона, который будет удалён
      */
     @Override
-    public void deletePhoneNumber(String phoneNumber) {
+    public final void deletePhoneNumber(String phoneNumber) {
         for (I_Contact contact : contacts.values()) {
             try {
                 contact.getPhoneNumberMap().values().remove(contact.getPhoneIDbyNumber(phoneNumber));
