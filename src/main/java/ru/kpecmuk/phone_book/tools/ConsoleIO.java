@@ -11,7 +11,7 @@ import java.util.Scanner;
  * @since 16.02.2017
  */
 public class ConsoleIO implements IO {
-    private final Logger logger = LoggerFactory.getLogger(ConsoleIO.class.getSimpleName());
+    private final Logger log = LoggerFactory.getLogger(ConsoleIO.class.getSimpleName());
     private final Scanner scanner;
     private final PrintStream out;
 

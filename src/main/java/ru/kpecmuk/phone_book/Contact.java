@@ -14,7 +14,7 @@ import java.util.Map;
  * @since 15.02.17
  */
 public class Contact implements I_Contact {
-    private final Logger logger = LoggerFactory.getLogger(Contact.class.getSimpleName());
+    private final Logger log = LoggerFactory.getLogger(Contact.class.getSimpleName());
     private final String name;
     private final Map<Integer, I_PhoneNumber> phoneNumberMap = new LinkedHashMap<>();
     private int id;
@@ -25,19 +25,19 @@ public class Contact implements I_Contact {
 
     @Override
     public String getContactName() {
-        logger.info(" returning " + this.name);
+        log.info(" returning " + this.name);
         return this.name;
     }
 
     @Override
     public int getContactID() {
-        logger.info(" returning " + this.id);
+        log.info(" returning " + this.id);
         return this.id;
     }
 
     @Override
     public void setContactID(int id) {
-        logger.info(" setting " + id);
+        log.info(" setting " + id);
         this.id = id;
     }
 

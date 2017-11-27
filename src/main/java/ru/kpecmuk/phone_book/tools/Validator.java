@@ -11,7 +11,7 @@ import java.io.IOException;
  * @since 15.02.2017
  */
 public class Validator implements Closeable {
-    private final Logger logger = LoggerFactory.getLogger(Validator.class.getSimpleName());
+    private final Logger log = LoggerFactory.getLogger(Validator.class.getSimpleName());
     private final IO io;
 
     public Validator(IO io) {

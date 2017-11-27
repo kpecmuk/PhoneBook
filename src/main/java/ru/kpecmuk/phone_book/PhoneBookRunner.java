@@ -16,12 +16,12 @@ import java.sql.SQLException;
  * @since 14.02.17
  */
 class PhoneBookRunner {
-    private static final Logger logger = LoggerFactory.getLogger(PhoneBookRunner.class.getSimpleName());
+    private static final Logger log = LoggerFactory.getLogger(PhoneBookRunner.class.getSimpleName());
 
     public static void main(String[] args) throws IOException, SQLException {
 
         PhoneBookUI ui = new PhoneBookUI();
-        logger.info(ui + " created!");
+        log.info(ui + " created!");
 
         ui.loadAction(new ViewContacts());
         ui.loadAction(new AddContactAction());

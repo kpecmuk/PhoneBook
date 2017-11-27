@@ -5,5 +5,6 @@ package ru.kpecmuk.phone_book.tools;
  * @since 16.02.2017
  */
 interface I_Input {
+
     String read();
 }

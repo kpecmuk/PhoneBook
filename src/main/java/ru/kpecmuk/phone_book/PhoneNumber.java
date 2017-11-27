@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
  * @since 15.02.2017
  */
 class PhoneNumber implements I_PhoneNumber {
-    private final Logger logger = LoggerFactory.getLogger(PhoneBook.class.getSimpleName());
+    private final Logger log = LoggerFactory.getLogger(PhoneBook.class.getSimpleName());
     private final String phoneNumber;
     private final int id;
 
@@ -20,12 +20,12 @@ class PhoneNumber implements I_PhoneNumber {
     }
 
     public int getID() {
-        logger.info("returning phone number ID - " + this.id);
+        log.info("returning phone number ID - " + this.id);
         return this.id;
     }
 
     public String getPhoneNumber() {
-        logger.info("returning phone number - " + this.phoneNumber);
+        log.info("returning phone number - " + this.phoneNumber);
         return this.phoneNumber;
     }
 }

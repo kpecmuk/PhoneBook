@@ -12,11 +12,11 @@ import ru.kpecmuk.phone_book.tools.Validator;
 public class AddPhoneNumber implements Action {
     private static final int ADD_PHONE_KEY = 4;
     private final String actionIntro = " - Add phone number\n";
-    private final Logger logger = LoggerFactory.getLogger(AddPhoneNumber.class.getSimpleName());
+    private final Logger log = LoggerFactory.getLogger(AddPhoneNumber.class.getSimpleName());
 
     @Override
     public void execute(I_PhoneBook phoneBook, Validator validator) {
-        logger.info("Running action " + actionIntro);
+        log.info("Running action " + actionIntro);
         String contactName = validator.getString("Enter contact name: ");
         String phoneNumber = validator.getString("Enter phone number: ");
         phoneBook.addPhoneNumber(contactName, phoneNumber);

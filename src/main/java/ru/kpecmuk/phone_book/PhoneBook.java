@@ -19,7 +19,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @since 14.02.17
  */
 public class PhoneBook implements I_PhoneBook {
-    private final Logger logger = LoggerFactory.getLogger(PhoneBook.class.getSimpleName());
+    private final Logger log = LoggerFactory.getLogger(PhoneBook.class.getSimpleName());
     private final AtomicInteger contactIds = new AtomicInteger();
     private final AtomicInteger phoneIds = new AtomicInteger();
     private final Map<Integer, I_Contact> contacts = new LinkedHashMap<>();
@@ -49,12 +49,12 @@ public class PhoneBook implements I_PhoneBook {
     public final void addContact(String contactName) {
         try {
             findContact(contactName);
-            logger.info("Contact " + contactName + " already exist");
+            log.info("Contact " + contactName + " already exist");
         } catch (UnsupportedOperationException e) {
             I_Contact contact = new Contact(contactName);
             contact.setContactID(contactIds.incrementAndGet());
             this.contacts.put(contact.getContactID(), contact);
-            logger.info("Contact " + contact.getContactName() + " added");
+            log.info("Contact " + contact.getContactName() + " added");
         }
     }
 
@@ -68,9 +68,9 @@ public class PhoneBook implements I_PhoneBook {
         try {
             I_Contact contactIter = findContact(contactName);
             this.contacts.remove(contactIter.getContactID());
-            logger.info("Contact " + contactName + " deleted");
+            log.info("Contact " + contactName + " deleted");
         } catch (UnsupportedOperationException e) {
-            logger.info("Contact " + contactName + " not found");
+            log.info("Contact " + contactName + " not found");
         }
     }
 
@@ -87,18 +87,18 @@ public class PhoneBook implements I_PhoneBook {
         try {
             contactIter = findContact(contactName);
         } catch (UnsupportedOperationException e) {     // не нашли такое имя, будем создавать новый контакт
-            logger.info("Contact name not found");      // с номером телефона
+            log.info("Contact name not found");      // с номером телефона
             addNewContactAndPhone(contactName, contactNumber);
             return;
         }
-        logger.info("Contact name " + contactIter.getContactName() + " found");
+        log.info("Contact name " + contactIter.getContactName() + " found");
         try {
             contactIter.getPhoneIDbyNumber(contactNumber);
-            logger.info("Phone number already exist");
+            log.info("Phone number already exist");
         } catch (UnsupportedOperationException e) {             // мы тут, значит такого номера нет
             PhoneNumber phoneNumber = new PhoneNumber(phoneIds.incrementAndGet(), contactNumber);
             contactIter.getPhoneNumberMap().put(phoneNumber.getID(), phoneNumber);
-            logger.info("Phone " + contactNumber + " added to " + contactIter.getContactName());
+            log.info("Phone " + contactNumber + " added to " + contactIter.getContactName());
         }
     }
 
@@ -118,7 +118,7 @@ public class PhoneBook implements I_PhoneBook {
      * Сразу создаём 2 объекта - имя контакта и телефон
      */
     private void addNewContactAndPhone(String contactName, String contactNumber) {
-        logger.info("Creating new contact " + contactName + " and phone number " + contactNumber);
+        log.info("Creating new contact " + contactName + " and phone number " + contactNumber);
         this.addContact(contactName);
         this.addPhoneNumber(contactName, contactNumber);
     }
@@ -134,9 +134,9 @@ public class PhoneBook implements I_PhoneBook {
         for (I_Contact contact : contacts.values()) {
             try {
                 contact.getPhoneNumberMap().values().remove(contact.getPhoneIDbyNumber(phoneNumber));
-                logger.info("Phone " + phoneNumber + " deleted");
+                log.info("Phone " + phoneNumber + " deleted");
             } catch (UnsupportedOperationException e) {
-                logger.info("Nothing found");
+                log.info("Nothing found");
             }
         }
     }
