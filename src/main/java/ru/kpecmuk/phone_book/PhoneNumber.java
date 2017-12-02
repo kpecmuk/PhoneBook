@@ -20,7 +20,7 @@ class PhoneNumber implements I_PhoneNumber {
     }
 
     public int getID() {
-        log.info("returning phone number ID - " + this.id);
+        log.info("returning phone ID - " + this.id);
         return this.id;
     }
 

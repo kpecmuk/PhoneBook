@@ -20,6 +20,9 @@ public class Database {
     private String login;
     private String password;
 
+    /**
+     * Загружаем данные для подключения к БД из файла и сохраняем
+     */
     public Database() {
 
         Properties property = new Properties();
@@ -39,6 +42,11 @@ public class Database {
         }
     }
 
+    /**
+     * Проверяем есть ли доступ к БД
+     *
+     * @return true если да
+     */
     public boolean checkConnection() {
         Connection connection = null;
         boolean result = true;
@@ -47,13 +55,13 @@ public class Database {
             connection = DriverManager.getConnection(this.host, this.login, this.password);
         } catch (Exception e) {
             result = false;
-            log.error(String.valueOf(e));
+            log.error(e.getMessage());
         } finally {
             try {
                 assert connection != null;
                 connection.close();
             } catch (SQLException e) {
-                log.error(String.valueOf(e));
+                log.error(e.getMessage());
             }
         }
         return result;

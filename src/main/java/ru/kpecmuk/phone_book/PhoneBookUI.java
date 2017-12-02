@@ -8,7 +8,6 @@ import ru.kpecmuk.phone_book.tools.ConsoleIO;
 import ru.kpecmuk.phone_book.tools.Validator;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -27,7 +26,7 @@ class PhoneBookUI {
     private final Validator validator = new Validator(new ConsoleIO());
     private final Database database = new Database();
 
-    PhoneBookUI() throws SQLException {
+    PhoneBookUI() {
         log.info("Created : " + this.getClass().getSimpleName());
     }
 
